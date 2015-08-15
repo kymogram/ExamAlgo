@@ -1,19 +1,21 @@
 def AfficheChemins(tree, path=[]):
-    if tree.RightChild != None or tree.LeftChild != None:
         path.append(tree.getRootVal())
-        AfficheChemins(tree.LeftChild, path)
-        AfficheChemins(tree.RightChild, path)
+        if tree.LeftChild != None:
+            AfficheChemins(tree.LeftChild, path)
+        if tree.RightChild != None:
+            AfficheChemins(tree.RightChild, path)
     else:
         print(path)
         path.pop()
 
 def sommeChemin(tree, somme, valPath=0):
-    if tree.RightChild != None or tree.LeftChild != None:
         valPath += tree.getRootVal()
-        if sommeChemin(tree.LeftChild, somme, valPath):
-            return True
-        if sommeChemin(tree.RightChild, somme, valPath):
-            return True
+        if tree.LeftChild != None:
+            if sommeChemin(tree.LeftChild, somme, valPath):
+                return True
+        if tree.RightChild != None:
+            if sommeChemin(tree.RightChild, somme, valPath):
+                return True
     else:
         if valPath == some:
             return True
